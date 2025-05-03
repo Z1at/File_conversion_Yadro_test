@@ -74,7 +74,7 @@ class ArtifactGenerator:
             return False
         return True  # Возвращаем True, если все прошло успешно
 
-    def generate_config_xml(self, output_file="config.xml"):
+    def generate_config_xml(self, output_file="out/config.xml"):
         """
         Генерирует файл config.xml на основе загруженной модели.
 
@@ -136,7 +136,7 @@ class ArtifactGenerator:
 
         return True  # Возвращаем True, если все прошло успешно
 
-    def generate_meta_json(self, output_file="meta.json"):
+    def generate_meta_json(self, output_file="out/meta.json"):
         """
         Генерирует файл meta.json на основе загруженной модели.
 
@@ -192,7 +192,7 @@ class ArtifactGenerator:
 
         return True  # Возвращаем True, если все прошло успешно
 
-    def generate_delta_json(self, output_file="delta.json"):
+    def generate_delta_json(self, output_file="out/delta.json"):
         """
         Генерирует файл delta.json, содержащий разницу между config.json и patched_config.json.
 
@@ -244,7 +244,7 @@ class ArtifactGenerator:
             return False
         return True  # Возвращаем True, если все прошло успешно
 
-    def generate_res_patched_config_json(self, output_file="res_patched_config.json"):
+    def generate_res_patched_config_json(self, output_file="out/res_patched_config.json"):
         """
         Генерирует файл res_patched_config.json, применяя дельту (delta.json) к config.json.
 
@@ -258,7 +258,7 @@ class ArtifactGenerator:
         try:
             with open(self.config_file, "r") as f:
                 config_data = json.load(f)
-            with open("delta.json", "r") as f:
+            with open("out/delta.json", "r") as f:
                 delta_data = json.load(f)
         except FileNotFoundError as e:  # Обработка исключения, если файл не найде
             print(f"Ошибка: Файл конфигурации или delta.json не найден: {e}")
@@ -294,9 +294,9 @@ def main():
     """
 
     # Определяем имена файлов по умолчанию
-    default_xml_file = "impulse_test_input.xml"
-    default_config_file = "config.json"
-    default_patched_config_file = "patched_config.json"
+    default_xml_file = "input/impulse_test_input.xml"
+    default_config_file = "input/config.json"
+    default_patched_config_file = "input/patched_config.json"
 
     # Проверяем, существуют ли файлы по умолчанию, иначе запрашиваем у пользователя
     if not os.path.exists(default_xml_file):
