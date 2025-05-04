@@ -263,8 +263,7 @@ class ArtifactGenerator:
         try:
             with open(self.config_file, "r") as f:
                 config_data = json.load(f)
-            with open("out/delta.json",
-                      "r") as f:
+            with open("out/delta.json", "r") as f:
                 delta_data = json.load(f)
         except FileNotFoundError as e:
             print(f"Ошибка: Файл конфигурации или delta.json не найден: {e}")
